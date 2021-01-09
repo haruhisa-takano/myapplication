@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{{url_for('static',filename='reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'style.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="container mt-4 mb-4">
+            <h3 class="text-center mb-4 border-bottom pb-4 bg-light">{% block headline %}{% endblock %}</h3>
+            <!-- <h6 class="text-center mb-4 border-bottom pb-4 bg-light">{{message}}</h6> -->
+            <!-- <h6 class="text-center mb-4 border-bottom pb-4 bg-light">{{message2}}</h6> -->
+            <p class="text-left">{{message|safe}}</p>
+            <p class="text-left">{{message2|safe}}</p>
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">項目</th>
+                    <th scope="col">入力値</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row ">駅名,都道府県名</th>
+                    <td>{{data}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">駅からの距離</th>
+                    {% if select==1 %}
+                    <td>300m</td>
+                    {% elif select==2 %}
+                    <td>500m</td>
+                    {% elif select==3 %}
+                    <td>1000m</td>
+                    {% elif select==4 %}
+                    <td>2000m</td>
+                    {% elif select==5 %}
+                    <td>3000m</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th scope="row">表示件数</th>
+                    <td>{{num}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">選択した店舗</th>
+                    <td>{{select_shop}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">店舗の開店時間</th>
+                    <td>{{open_time}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </header>
+
+   <main>
+       <div class="container mb-4">
+           {% block content %}{% endblock %}
+       </div>
+   </main>
+   <footer>
+       <div class="container bg-dark text-white text-center">
+           {% block footer %}{% endblock %}
+       </div>
+   </footer>
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+アプリケーションページ
+{% endblock %}
+
+{% block headline %}
+{{title}}
+{% endblock %}
+
+{% block content%}
+
+
+<!-- <form method="post" action="/login">
+   <table>
+       <tr>
+           <th>id</th>
+           <td>
+               <input type="text" name="id" value="{{id}}"> 
+           </td>
+           <th>password</th>
+           <td>
+               <input type="password" name="pass">
+           </td>
+       </tr>
+       <th></th>
+       <td>
+           <input type="submit" value="Login">
+       </td>
+   </table>
+</form> -->
+<form method="post" action="/finish" class="border-bottom btn-light">
+    <p>選択した１店舗周辺の5日分の３時間ごとの天気を取得しました．店舗開店時間を確かめて，希望の時間帯を一つ選択してください．Googleカレンダーに登録します，</p>
+
+        {% for item in wead %}
+        <div class="card" >
+            <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="http://openweathermap.org/img/w/{{item['天気アイコン']}}.png" class="rounded float-left" alt="Image" width="200" height="200">
+                <!-- <svg class="bd-placeholder-img" width="100%" height="250" xmlns="{{item[5]}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></svg> -->
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h5 class="card-title">{{item['天気']}}</h5>
+                <p class="card-text"><strong>時間帯: {{item['予定開始時刻']}} ~ {{item['予定終了時刻']}}</strong></p>
+                <p class="card-text">気温:{{item['気温(℃)']}}℃</p>
+                <p class="card-text">降水確率:{{item['降水確率(%)']}}%</p>
+                <p class="card-text">湿度:{{item['湿度(%)']}}%</p>
+                <!-- <p class="card-text"><a href="{{item[2]}}" class="nav-link">{{item[2]}}</a></p> -->
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="time_num" id="{{loop.index0}}" value="{{loop.index0}}">
+                    <label class="form-check-label" for="{{loop.index0}}">この時間帯を選ぶ</label>
+                </div>
+                <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                </div>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    <!-- <form method="post" action="/step2">
+        <div class="form-group">
+            <label for="exampleInputEmail1">ログイン ID</label>
+            <input type="text" name="id" class="form-control mb-4 p-4" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">パスワード</label>
+            <input type="password" name="pass" class="form-control mb-4 p-4" id="exampleInputPassword1">
+        </div>
+        <input type="submit" class="btn btn-primary btn-lg" value="ログイン">
+    </form> -->
+    <input type="submit" class="btn btn-primary btn-lg" value="OK">
+</form>
+{% endblock %}
+{% block footer %}
+&copy;spica
+{% endblock %}

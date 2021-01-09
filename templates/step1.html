@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+アプリケーションページ
+{% endblock %}
+
+{% block headline %}
+{{title}}
+{% endblock %}
+
+
+{% block content%}
+
+
+<!-- <form method="post" action="/">
+   <div class="logout"><a href="/logout">ログアウト</a></div>
+   <table>
+       <tr>
+           <th>メッセージをどうぞ：</th>
+           <td>
+               <input type="text" name="comment"> 
+           </td>
+       </tr>
+       <th></th>
+       <td>
+           <input type="submit" value="メッセージ送信">
+       </td>
+   </table>
+</form> -->
+<p>旅行の目的地付近の駅名と都道府県名，その駅からの距離を1~5の番号(1:300m,2:500m,3:1000m,4:2000m,5:3000m)で入力してください．何件表示するかも1~100で指定してください</p>
+
+<form method="post" action="/st1" class="border-bottom btn-light">
+    <div class="form-group row">
+      <label for="Input" class="col-sm-2 col-form-label">駅名</label>
+      <div class="col-sm-10">
+        <input type="text" name="st_name" class="form-control p-4" id="Input" placeholder="例 札幌">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="Input2" class="col-sm-2 col-form-label">都道府県名</label>
+      <div class="col-sm-10">
+        <input type="text" name="pref_name" class="form-control p-4" id="Input2" placeholder="例 北海道">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="inlineFormSelectPref">距離</label>
+        <div class="col-sm-10">
+        <select name="selected" class="form-select" id="inlineFormSelectPref" >
+          <option selected>上記で選んだ駅からどのくらいの距離までが希望か選択してください</option>
+          <option value="1">1：300m</option>
+          <option value="2">2：500m</option>
+          <option value="3">3：1000m</option>
+          <option value="4">4：2000m</option>
+          <option value="5">5：3000m</option>
+        </select>
+        </div> 
+    </div>
+    <div class="form-group row">
+      <label for="Inputnum" class="col-sm-2 col-form-label">表示件数</label>
+      <div class="col-sm-3">
+        <input type="text" name="number" class="form-control p-4" id="Inputnum" placeholder="例 10">
+      </div>
+    </div>
+  
+   
+   <input type="submit" class="btn btn-primary btn-lg" value="OK">
+</form>
+<!-- <div class="text-right"><a href="/logout">ログアウト</a></div>
+<div class="container-fluid">
+   {% for item in data %}
+  <p class="border-bottom p-4">{{select}}</p>
+   <p class="border-bottom p-4">{{item[0]}}：{{item[1]}}</p>
+   {% endfor %}
+</div>
+{% if data != [] %}
+<div class="btn btn-outline-info"><a href="/delete">メッセージ削除</a></div>
+{% endif %} -->
+{% endblock %}
+
+
+{% block footer %}
+&copy;spica
+{% endblock %}

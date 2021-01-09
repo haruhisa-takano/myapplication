@@ -1,0 +1,40 @@
+{% extends "layout2.html" %}
+
+{% block title %}
+アプリケーションページ
+{% endblock %}
+
+{% block headline %}
+{{title}}
+{% endblock %}
+
+{% block content%}
+
+
+<!-- <form method="post" action="/login">
+   <table>
+       <tr>
+           <th>id</th>
+           <td>
+               <input type="text" name="id" value="{{id}}"> 
+           </td>
+           <th>password</th>
+           <td>
+               <input type="password" name="pass">
+           </td>
+       </tr>
+       <th></th>
+       <td>
+           <input type="submit" value="Login">
+       </td>
+   </table>
+</form> -->
+<h4 class="text-center mb-4 border-bottom pb-4 bg-light">{{start_t}} ~ {{end_t}}の時間帯に<br>{{select_shop}}で食事の予定をGoogleカレンダーに入れました．</h4>
+<form method="post" action="/" class="border-bottom btn-light">
+    
+    <input type="submit" class="btn btn-primary btn-lg" value="トップに戻る">
+</form>
+{% endblock %}
+{% block footer %}
+&copy;spica
+{% endblock %}
