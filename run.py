@@ -28,6 +28,10 @@ def index():
     global rail_data
     global select
     global num
+    name_list = {} #以下４行変更差分
+    rail_data =[]
+    select = int() 
+    num = int()
 
     title ="ようこそアプリケーションページへ"
     msg1 = """
@@ -64,6 +68,7 @@ def step1():
     global num
     global shres
     global shres2
+
     st_name = request.form.get('st_name')
     pref_name = request.form.get('pref_name')
     num = int(request.form.get('number'))
@@ -82,7 +87,7 @@ def step1():
                 data = rail_data)
     shres2=search_gourmet.HotpepperAPI(shres,select,num)
 
-    return redirect('/step2')
+    return redirect('/step2') #step2へ
 
 """
     print(num)
@@ -113,7 +118,6 @@ def index2():
     4.選択した時間帯を自動でGoogleカレンダーに登録します．
     """
     print(shres2)
-    print("≥≥/")
     return render_template('step2.html', \
                 title=title, \
                 message=msg1,\
@@ -146,12 +150,14 @@ def step2():
 
     wead = search_gourmet.WeatherAPI([select_lat,select_lng])
 
+    return redirect('/step3')
+
+    """
     print(check)
     print(type(check))
     print("!!!")
     print(select_lat,select_lng)
-
-    return redirect('/step3')
+    """
 
 #3段階目表示
 @app.route('/step3', methods=['GET'])
@@ -193,13 +199,8 @@ def index3():
 
 @app.route('/finish', methods=['POST'])
 def step3():
-    #global select
-    #global num
-    #global shres
-    #global shres2
-    global select_lat
+    global select_lat 
     global select_lng
-    #global select_shop
     global open_time
     global wead
     global select_add
@@ -214,13 +215,20 @@ def step3():
 
     insert_event.main(select_shop, select_add, start_t, end_t)
     
+    return redirect('/step4')
+
+    """
+    #global select
+    #global num
+    #global shres
+    #global shres2
+    #global select_shop
     print(check)
     print(type(check))
     print("!!!")
     print(select_lat,select_lng)
-
-    return redirect('/step4')
-
+    """
+    
 #最終段階表示
 @app.route('/step4', methods=['GET'])
 def index4():
